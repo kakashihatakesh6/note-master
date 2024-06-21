@@ -2,7 +2,7 @@
 import React from 'react'
 
 const NewsItem = ({ newsData }) => {
-  console.log(newsData.articles)
+  // console.log(newsData.articles)
   return (
     <div className="text-gray-600 p-4">
       <div className="max-w-7xl px-5 py-12 mx-auto">

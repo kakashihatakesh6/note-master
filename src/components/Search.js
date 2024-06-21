@@ -1,10 +1,15 @@
 import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { searchQuery } from '../redux/slices/search';
 
 const Search = () => {
     const [qValue, setQValue] = useState('');
-
-    const handleSearch = () => {
-        
+    const myQuery = useSelector((state) => state.search.value);
+    const dispatch = useDispatch();
+    // console.log(myQuery)
+    const handleSearch = (qValue) => {
+        dispatch(searchQuery(qValue));
+        console.log("dispatch", myQuery)
     }
     return (
         <div>
