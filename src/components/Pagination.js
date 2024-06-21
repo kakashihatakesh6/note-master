@@ -3,12 +3,14 @@ import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 
 
 const Pagination = ({ currentPage, totalPage, onPageChange }) => {
-
+    
     const handlePageChange = (page) => {
         onPageChange(page)
     }
-
+    
     const pages = [];
+    const newTotalPage = parseInt(totalPage / 9);
+    console.log("new Total page =>", newTotalPage)
     for (let i = 1; i <= totalPage; i++) {
         pages.push(i);
     }
@@ -20,7 +22,7 @@ const Pagination = ({ currentPage, totalPage, onPageChange }) => {
                         <SlArrowLeft />
                     </button>
                 </li>
-                {pages.map((page, index) => (
+                {pages.slice(0, 10).map((page, index) => (
                     <li key={index} onClick={() => { handlePageChange(page) }}
                         className={`${currentPage === page ? 'bg-orange-500 border-amber-400' : ''}
                    hover:bg-orange-800 text-black px-3 py-1 cursor-pointer rounded-full`}>

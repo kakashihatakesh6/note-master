@@ -8,7 +8,7 @@ const News = () => {
   const [newsData, setNewsData] = useState({})
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false)
-  const totalPage = 10;
+  const [totalPage, setTotalPage] = useState(10);
 
   const query = useSelector((state) => state.search.value)
 
@@ -28,7 +28,7 @@ const News = () => {
     setIsLoading(true);
 
     // API Call for top headlines
-    let res = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=1bb53ca7aeed4092a31d64da60e357e8`);
+    let res = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${process.env.REACT_APP_API_KEY}`);
     let nData = res.data;
     setNewsData(nData);
     // console.log(nData)
@@ -42,9 +42,10 @@ const News = () => {
     setIsLoading(true);
 
     // API Call for top headlines
-    let res = await axios.get(`https://newsapi.org/v2/everything?q=${query}&apiKey=1bb53ca7aeed4092a31d64da60e357e8`);
+    let res = await axios.get(`https://newsapi.org/v2/everything?q=${query}&apiKey=${process.env.REACT_APP_API_KEY}`);
     let nData = res.data;
     setNewsData(nData);
+    setTotalPage(nData.articles.length)
     console.log("Cricket =>",nData)
 
     // End of Loading
