@@ -30,6 +30,7 @@ const News = () => {
 
       // API Call for top headlines
       let res = await axios.get(`https://newspoint-server.vercel.app/getdata?q=business&page=${currentPage}`);
+      // let res = await axios.get(`http://localhost:5000/getdata?q=business&page=${currentPage}`);
       let nData = res.data;
 
       setNewsData(nData.newsData);

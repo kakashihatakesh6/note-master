@@ -1,11 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-// const apiUrl = `http://localhost:5000/getdata?q=nikhil`;
 export const fetchNews = createAsyncThunk(
     'news/fetchNews',
     async (query, thunkAPI) => {
         const apiUrl = `https://newspoint-server.vercel.app/getdata?q=${query}`;
+        // const apiUrl = `http://localhost:5000/getdata?q=${query}`;
         const response = await axios.get(apiUrl);
         return response.data.newsData;
     }
