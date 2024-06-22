@@ -7,6 +7,7 @@ import {
   Routes,
   Route
 } from 'react-router-dom';
+import NewsDetails from './components/NewsDetails';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/:rnews' element={<Category />} />
+            <Route path='/news/:newsname' element={<NewsDetails />} />
           </Routes>
         </div>
       </Router>

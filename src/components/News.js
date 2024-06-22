@@ -15,7 +15,7 @@ const News = () => {
 
   useEffect(() => {
     fetchNewsData();
-  }, [])
+  }, [currentPage])
 
   useEffect(() => {
     setNewsData(news)
@@ -29,11 +29,12 @@ const News = () => {
       setIsLoading(true);
 
       // API Call for top headlines
-      let res = await axios.get(`https://newspoint-server.vercel.app/getdata?q=india`);
+      let res = await axios.get(`https://newspoint-server.vercel.app/getdata?q=business&page=${currentPage}`);
       let nData = res.data;
 
       setNewsData(nData.newsData);
-      console.log("ndata =>", nData)
+      // console.log("ndata =>", nData)
+      setTotalPage(nData.newsData.totalResults)
 
       // End of Loading
       setIsLoading(false);

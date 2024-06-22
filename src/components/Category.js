@@ -21,6 +21,7 @@ const Category = () => {
 
     useEffect(() => {
         setNewsData(news.articles)
+        setTotalPage(news.articles.totalResults)
     }, [news])
 
 

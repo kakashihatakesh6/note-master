@@ -30,7 +30,7 @@ const Navbar = () => {
 
           {/* logo */}
           <div className='flex items-center'>
-            <a href="" className='text-red-800 font-bold font-serif uppercase text-3xl tracking-wider'>News Point</a>
+            <a href="/" className='text-red-800 font-bold font-serif uppercase text-3xl tracking-wider'>News Point</a>
           </div>
 
 
