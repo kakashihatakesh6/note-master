@@ -28,10 +28,11 @@ const News = () => {
     setIsLoading(true);
 
     // API Call for top headlines
-    let res = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${process.env.REACT_APP_API_KEY}`);
+    // let res = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${process.env.REACT_APP_API_KEY}`);
+    let res = await axios.get(`https://newspoint-server.vercel.app/getdata`);
     let nData = res.data;
-    setNewsData(nData);
-    // console.log(nData)
+    setNewsData(nData.newsData);
+    console.log("ndata =>",nData)
 
     // End of Loading
     setIsLoading(false);
