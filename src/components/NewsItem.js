@@ -6,6 +6,9 @@ const NewsItem = ({ newsData }) => {
   return (
     <div className="text-gray-600 p-4">
       <div className="max-w-7xl px-5 py-12 mx-auto">
+        
+
+
         <div className="flex flex-wrap -m-4">
 
           

@@ -6,9 +6,9 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
 
   const headerLinks = [
-    { title: 'News', href: '' },
-    { title: 'Videos', href: '' },
-    { title: 'City', href: '' },
+    { title: 'Politics', href: '/' },
+    { title: 'Sports', href: '' },
+    { title: 'Bangalore', href: '' },
     { title: 'India', href: '' },
     { title: 'Electronics', href: '' },
     { title: 'Economy', href: '' },
@@ -35,12 +35,13 @@ const Navbar = () => {
 
 
           {/* Sliding Menu */}
-          <div className={`${isOpen ? 'block' : 'hidden'} md:hidden absolute top-0 left-0 w-3/4 bg-gray-800 h-full z-50`}>
+          <div className={`${isOpen ? 'block' : 'hidden'} md:hidden absolute top-0 left-0 w-3/4 bg-slate-200 h-full z-50`}>
             <div className='p-4'>
-              <a href="#" className='block text-black py-2'>Home</a>
-              <a href="#" className='block text-black py-2'>About</a>
-              <a href="#" className='block text-black py-2'>Services</a>
-              <a href="#" className='block text-black py-2'>Contact</a>
+              <a href="/" className='block text-black py-2'>Home</a>
+              <a href="/" className='block text-black py-2'>About</a>
+              <a href="/" className='block text-black py-2'>Favorite</a>
+              <a href="/" className='block text-black py-2'>Services</a>
+              <a href="/" className='block text-black py-2'>Contact</a>
             </div>
           </div>
 
@@ -69,9 +70,9 @@ const Navbar = () => {
       <div className='overflow-x-hidden'>
         <div className="max-w-7xl px-4 py-1 border-t-[1px] border-b-[1px] border-slate-400 flex flex-col md:flex-row mx-auto justify-between space-y-2 md:space-y-0 items-center">
 
-          <div className='flex space-x-6'>
+          <div className='flex space-x-2 mx-auto md:space-x-6'>
             {headerLinks.map((item, index) => (
-              <a key={index} href={item.href} className='uppercase'>{item.title}</a>
+              <a key={index} href={`/${item?.title?.toLowerCase()}`} className='uppercase'>{item.title}</a>
             ))}
 
           </div>

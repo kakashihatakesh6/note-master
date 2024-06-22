@@ -10,55 +10,44 @@ const News = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [totalPage, setTotalPage] = useState(10);
 
-  const query = useSelector((state) => state.search.value)
-
-  console.log("query News =>", query)
+  const news = useSelector((state) => state.news.articles);
+  console.log("news =>", news)
 
   useEffect(() => {
     fetchNewsData();
   }, [])
 
   useEffect(() => {
-    fetchAPI(query);
-  }, [query])
+    setNewsData(news)
+  }, [news])
 
-  // API CALL 
+  //
   const fetchNewsData = async () => {
-    // loading
-    setIsLoading(true);
 
+    try {
+      // loading
+      setIsLoading(true);
 
-    // API Call for top headlines
-    // let res = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${process.env.REACT_APP_API_KEY}`);
-    let res = await axios.get(`https://newspoint-server.vercel.app/getdata`);
-    let nData = res.data;
-    setNewsData(nData.newsData);
-    console.log("ndata =>",nData)
+      // API Call for top headlines
+      let res = await axios.get(`https://newspoint-server.vercel.app/getdata?q=india`);
+      let nData = res.data;
 
-    // End of Loading
-    setIsLoading(false);
+      setNewsData(nData.newsData);
+      console.log("ndata =>", nData)
+
+      // End of Loading
+      setIsLoading(false);
+
+    } catch (error) {
+      console.log("Some error Occurred", error);
+    }
+
   }
-
-  const fetchAPI = async (query) => {
-    // loading
-    setIsLoading(true);
-
-    // API Call for top headlines
-    let res = await axios.get(`https://newsapi.org/v2/everything?q=${query}&apiKey=${process.env.REACT_APP_API_KEY}`);
-    let nData = res.data;
-    setNewsData(nData);
-    setTotalPage(nData.articles.length)
-    console.log("Cricket =>",nData)
-
-    // End of Loading
-    setIsLoading(false);
-  }
-
-  // Page Change
-  const handlePageChange = (page) => {
+ const handlePageChange = (page) => {
     setCurrentPage(page)
   }
 
+ 
   return (
     <div className='flex flex-col items-center w-full mx-4 mb-4'>
       {isLoading &&
@@ -78,7 +67,7 @@ const News = () => {
         totalPage={totalPage}
         onPageChange={handlePageChange}
       />
-      
+
     </div>
   )
 }

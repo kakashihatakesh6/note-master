@@ -10,7 +10,7 @@ const Pagination = ({ currentPage, totalPage, onPageChange }) => {
     
     const pages = [];
     const newTotalPage = parseInt(totalPage / 9);
-    console.log("new Total page =>", newTotalPage)
+    // console.log("new Total page =>", newTotalPage)
     for (let i = 1; i <= totalPage; i++) {
         pages.push(i);
     }
