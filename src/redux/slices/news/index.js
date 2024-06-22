@@ -1,0 +1,43 @@
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
+
+// const apiUrl = `http://localhost:5000/getdata?q=nikhil`;
+export const fetchNews = createAsyncThunk(
+    'news/fetchNews',
+    async (query, thunkAPI) => {
+        const apiUrl = `https://newspoint-server.vercel.app/getdata?q=${query}`;
+        const response = await axios.get(apiUrl);
+        return response.data.newsData;
+    }
+)
+
+export const newsSlice = createSlice({
+    name: 'news',
+    initialState: {
+        loading: false,
+        articles: [],
+        error: '',
+    },
+    reducers: {},
+    extraReducers: (builder) => {
+        builder
+        .addCase(fetchNews.pending, (state) => {
+            state.loading = true;
+            state.articles = [];
+            state.error = '';
+        })
+        .addCase(fetchNews.fulfilled, (state, action) => {
+            state.loading = false;
+            state.articles = action.payload;
+            state.error = '';
+        })
+        .addCase(fetchNews.rejected, (state, action) => {
+            state.loading = false;
+            state.articles = [];
+            state.error = action.error.message;
+        });
+    }
+});
+
+
+export default newsSlice.reducer;
