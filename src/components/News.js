@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import NewsItem from './NewsItem'
 import axios from 'axios'
 import Pagination from './Pagination'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchNews } from '../redux/slices/news'
 
 const News = () => {
   const [newsData, setNewsData] = useState({})
@@ -11,6 +12,7 @@ const News = () => {
   const [totalPage, setTotalPage] = useState(10);
 
   const news = useSelector((state) => state.news.articles);
+  const dispatch = useDispatch();
   console.log("news =>", news)
 
   useEffect(() => {
@@ -33,6 +35,7 @@ const News = () => {
       // let res = await axios.get(`http://localhost:5000/getdata?q=business&page=${currentPage}`);
       let nData = res.data;
 
+      dispatch(fetchNews('business'))
       setNewsData(nData.newsData);
       // console.log("ndata =>", nData)
       setTotalPage(nData.newsData.totalResults)

@@ -26,7 +26,7 @@ const NewsItem = ({ newsData }) => {
                 <img className="lg:h-48 md:h-36 w-full object-cover object-center" src={item.urlToImage || demoContent.image} alt="blog" />
                 <Link to={`/news/${item.source.name}`}>
                   <div className="p-6">
-                    <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">SPORTS</h2>
+                    <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">Breaking News</h2>
                     <h1 className="title-font text-lg font-medium text-gray-900 mb-3">{item.title || demoContent.title}</h1>
                     <p className="leading-relaxed mb-3">{item.content || demoContent.content}</p>
                     <div className="flex items-center flex-wrap ">
