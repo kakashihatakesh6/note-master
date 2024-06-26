@@ -42,7 +42,7 @@ const Register = ({ setIsLoginVisible }) => {
 
     let response = await res.json();
 
-    console.log(response);
+    console.log("res =>", response);
 
     if (response.success === true) {
       localStorage.setItem("auth-token", response.authtoken);
