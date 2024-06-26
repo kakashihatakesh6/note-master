@@ -59,7 +59,7 @@ const Notes = ({ notes, setNotes }) => {
                             <div className="flex flex-row w-full justify-between">
                                 <h2 class="tracking-widest text-xs title-font font-medium text-indigo-500 mb-1">{note?.tags || 'Personal'}</h2>
                                 <div className='flex space-x-5 text-xl pr-4'>
-                                    <FaRegEdit onClick={handleEditNote} className='cursor-pointer' />
+                                    <FaRegEdit onClick={() => {handleEditNote(note?._id)}} className='cursor-pointer' />
                                     <RiDeleteBin6Line onClick={() => {handleDeleteNote(note?._id)}} className='cursor-pointer' />
                                 </div>
                             </div>
@@ -78,7 +78,7 @@ const Notes = ({ notes, setNotes }) => {
 
             ))}
 
-            <div class="py-8 px-4 lg:w-1/3">
+            {/* <div class="py-8 px-4 lg:w-1/3">
                 <div class="h-full flex items-start">
                     <div class="w-12 flex-shrink-0 flex flex-col text-center leading-none">
                         <span class="text-gray-500 pb-2 mb-2 border-b-2 border-gray-200">Jul</span>
@@ -96,9 +96,9 @@ const Notes = ({ notes, setNotes }) => {
                         </a>
                     </div>
                 </div>
-            </div>
+            </div> */}
 
-            <div class="py-8 px-4 lg:w-1/3">
+            {/* <div class="py-8 px-4 lg:w-1/3">
                 <div class="h-full flex items-start">
                     <div class="w-12 flex-shrink-0 flex flex-col text-center leading-none">
                         <span class="text-gray-500 pb-2 mb-2 border-b-2 border-gray-200">Jul</span>
@@ -116,7 +116,7 @@ const Notes = ({ notes, setNotes }) => {
                         </a>
                     </div>
                 </div>
-            </div>
+            </div> */}
 
 
         </div>

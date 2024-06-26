@@ -100,6 +100,10 @@ const Login = ({ setIsLoginVisible }) => {
 
 
         <h2 className='text-3xl font-bold mb-6'>Get started with Note Master</h2>
+
+        <p>Email: <span className="font-semibold">admin@gmail.com</span> ||
+          Password: <span className="font-semibold">admin</span></p>
+
         <div className="mt-5 flex flex-col w-full md:px-16">
           <form className="space-y-6 px-1 md:px-8 py-4" method="POST" onSubmit={handleSubmit}>
             <div>
