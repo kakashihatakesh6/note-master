@@ -1,5 +1,4 @@
 import './App.css';
-import Category from './components/Category';
 import Home from './components/Home';
 import Navbar from './components/Nabar';
 import {
@@ -7,7 +6,10 @@ import {
   Routes,
   Route
 } from 'react-router-dom';
-import NewsDetails from './components/NewsDetails';
+import Login from './components/Login';
+import Register from './components/Register';
+import Dashboard from './components/Dashboard';
+
 
 
 function App() {
@@ -18,8 +20,7 @@ function App() {
         <div className='flex mx-auto'>
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='/:rnews' element={<Category />} />
-            <Route path='/news/:newsname' element={<NewsDetails />} />
+            <Route path='/dashboard' element={<Dashboard />} />
           </Routes>
         </div>
       </Router>
