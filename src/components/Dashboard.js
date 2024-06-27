@@ -24,14 +24,14 @@ const Dashboard = () => {
         try {
             const authtoken = localStorage.getItem('auth-token')
             let apiUrl = `${process.env.REACT_APP_PUBLIC_HOST}/api/notes/getnotes?authtoken=${authtoken}`;
-            console.log(apiUrl)
+            // console.log(apiUrl)
             let res = await axios.get(apiUrl, {
                 header: {
                     'auth-token': authtoken
                 }
             });
             let response = await res.data;
-            console.log(response);
+            // console.log(response);
             setNotes(response.notes)
             
         } catch (error) {
@@ -42,8 +42,8 @@ const Dashboard = () => {
     
     return (
         <div>
-            <section class="text-gray-600 body-font">
-                <div class="container py-12 mx-auto">
+            <section className="text-gray-600 body-font">
+                <div className="container py-12 mx-auto">
 
                     <div className="flex flex-row space-x-14 items-center mb-10">
                         <h1 className='text-3xl text-blue-800 font-semibold'>Dashboard</h1>
@@ -56,9 +56,9 @@ const Dashboard = () => {
                     </div>
 
                     {toggleNoteVariant ? (
-                        <AddNote notes={notes} setNotes={setNotes}/>
+                        <AddNote notes={notes} setNotes={setNotes} />
                     ) : (
-                        <Notes notes={notes} setNotes={setNotes}/>
+                        <Notes notes={notes} setNotes={setNotes} fetchNotes={fetchNotes}/>
                     )}
 
 

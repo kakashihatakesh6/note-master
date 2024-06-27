@@ -61,8 +61,9 @@ const AddNote = ({ notes, setNotes }) => {
 
 
     return (
-        <div class="flex flex-col w-screen items-center">
-            <form action="POST" className='w-full md:w-1/3 mx-auto space-y-2 px-5 py-8 rounded-md shadow-md border-2 border-dotted bg-slate-300 border-gray-500' onSubmit={handleSubmit}>
+        <div className="flex flex-col w-screen items-center px-2">
+            {/* <h2 className="text-xl font-semibold py-2">Add a Note</h2> */}
+            <form action="POST" className='w-full md:w-1/3 md:mx-auto space-y-2 px-5 py-8 rounded-md shadow-md border-2 border-dotted bg-slate-300 border-gray-500' onSubmit={handleSubmit}>
                 <div className='flex flex-col'>
                     <label htmlFor="" className='text-lg'>Title</label>
                     <input type="text" value={title} onChange={(e) => { setTitle(e.target.value) }}

@@ -4,16 +4,21 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { CgSpinner } from "react-icons/cg";
+
 
 
 const Login = ({ setIsLoginVisible }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate();
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setIsLoading(true)
     try {
       const data = { email, password };
       let apiUrl = `${process.env.REACT_APP_PUBLIC_HOST}/api/auth/login`;
@@ -35,10 +40,13 @@ const Login = ({ setIsLoginVisible }) => {
           theme: "light",
         });
 
+        setIsLoading(false)
+
         setTimeout(() => {
           navigate('/dashboard');
         }, 1000);
       } else {
+        setIsLoading(false)
         toast.error("response.error", {
           position: "top-left",
           autoClose: 1000,
@@ -55,6 +63,7 @@ const Login = ({ setIsLoginVisible }) => {
       setPassword("");
 
     } catch (error) {
+      setIsLoading(false)
       toast.error("Please Enter The Valid Credentials", {
         position: "top-left",
         autoClose: 1000,
@@ -74,9 +83,9 @@ const Login = ({ setIsLoginVisible }) => {
   };
 
   const handleChange = (e) => {
-    if (e.target.name == "email") {
+    if (e.target.name === "email") {
       setEmail(e.target.value);
-    } else if (e.target.name == "password") {
+    } else if (e.target.name === "password") {
       setPassword(e.target.value);
     }
   };
@@ -163,9 +172,9 @@ const Login = ({ setIsLoginVisible }) => {
             <div>
               <button
                 type="submit"
-                className="flex w-full justify-center rounded-md bg-orange-600 px-3 py-2 text-lg font-semibold leading-6 text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="flex w-full justify-center items-center rounded-md bg-orange-600 px-3 py-2 text-lg font-semibold leading-6 text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
-                Sign in
+                {isLoading && <CgSpinner size={24} className="font-bold animate-spin mr-3"/>} Sign in
               </button>
             </div>
           </form>
