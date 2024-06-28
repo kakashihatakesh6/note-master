@@ -47,13 +47,14 @@ const Notes = ({ notes, setNotes, fetchNotes }) => {
             let apiUrl = `${process.env.REACT_APP_PUBLIC_HOST}/api/notes/deletenote/${id}`;
             const res = await axios.delete(apiUrl);
             const response = await res.data;
-            console.log("res =>", response.message, id);
+            console.log("res =>", id, response.message);
             // console.log("Deleting the note with id" + id);
             const newNotes = notes.filter((note) => { return note._id !== id });
             setNotes(newNotes);
+            // fetchNotes();
 
         } catch (error) {
-            console.log("Some Eror", error)
+            console.log("Some Eror Occurred!", error)
         }
 
     }
